@@ -51,11 +51,11 @@ Se mencionaron hooks de Git (pre-commit, pre-push) para validar código antes de
 
 ### Glosario breve
 
-. Commit: Registro de cambios confirmados en un repositorio.
-. Merge: Acción de unir dos ramas en una sola.
-. Pull: Operación para traer los cambios más recientes de una rama remota.
-. Stash: Herramienta para guardar temporalmente cambios sin hacer commit.
-. Hook: Script que se ejecuta automáticamente en ciertos eventos de Git.
+- Commit: Registro de cambios confirmados en un repositorio.
+- Merge: Acción de unir dos ramas en una sola.
+- Pull: Operación para traer los cambios más recientes de una rama remota.
+- Stash: Herramienta para guardar temporalmente cambios sin hacer commit.
+- Hook: Script que se ejecuta automáticamente en ciertos eventos de Git.
 
 
 

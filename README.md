@@ -49,6 +49,104 @@ Se mencionaron hooks de Git (pre-commit, pre-push) para validar código antes de
 - Se sugirió investigar y practicar el uso de hooks, protección de ramas y flujos de trabajo con pull requests.
 
 
+### Ejercicio de conflictos
+
+### 1. Crear un repositorio nuevo
+
+```sh
+mkdir git-ejercicios-conflictos
+cd git-ejercicios-conflictos
+```
+#### Iniciar repositorio
+```sh
+# iniciar repositorio
+git init
+```
+#### Crear un archivo Inicial
+```sh
+echo "# Proyecto Git - Conflictos" > README.md
+git add README.md
+git commit -m "Inicialización del repositorio con README"
+```
+
+### 2. Crear Ramas
+```sh
+# Rama para Correcciones
+git checkout -b fix/readme
+
+# Rama para nueva funcionalidad 
+git checkout main
+git checkout -b feature/authors
+```
+### 3. Modificar archivos en paralelo
+#### 📌 En fix/readme, modifica el README:
+```sh
+git checkout fix/readme
+echo "Este proyecto es una práctica de resolución de conflictos." >> README.md
+git add README.md
+git commit -m "Agrega descripción al README"
+```
+#### 📌 En feature/authors, modifica el mismo README pero en otra línea:
+```sh
+git checkout features/authors
+echo "Autores: Carlos y Equipo." >> README.md
+git add README.md
+git commit -m "Agrega sección de autores al README"
+```
+
+### 4. Generar un Conflicto
+
+#### 1 Cambia a main
+```sh
+git checkout main
+```
+#### 2 Une primero la rama fix/readme(no habrá conflictos todavía)
+```sh
+git merge fix/readme
+```
+#### 3 Ahora intenta unir feature/authors
+```sh
+git merge fix/authors
+```
+#### 👉 Aquí deberías ver un conflicto en README.md.
+
+### 5. Resolver el conflicto
+
+#### Abre el archivo README.md. Verás algo como:
+```md 
+#### Proyecto Git - Conflictos
+<<<<<<< HEAD
+Este proyecto es una práctica de resolución de conflictos.
+=======
+Autores: Carlos y Equipo.
+>>>>>>> feature/authors
+```
+#### ✍️ Resuélvelo manualmente, dejando una versión final limpia. Ejemplo:
+```md 
+# Proyecto Git - Conflictos
+Este proyecto es una práctica de resolución de conflictos.
+Autores: Carlos y Equipo.
+```
+#### Después, marca como resuelto
+
+```sh
+git add README.md
+git commit -m "Resuelve conflictos entre fix/readme y features/authors"
+```
+
+### 6 Subir al repositorio 
+
+#### Primero crea un repositorio en GitHub (por ejemplo: git-ejercicio-conflictos).
+#### Luego, enlaza y sube:
+
+```sh
+git remote add origin git@github.com:TU_USUARIO/git-ejercicio-conflictos.git
+git push -u origin main
+git push origin fix/readme
+git push origin feature/authors
+```
+
+
 ### Glosario breve
 
 - Commit: Registro de cambios confirmados en un repositorio.
